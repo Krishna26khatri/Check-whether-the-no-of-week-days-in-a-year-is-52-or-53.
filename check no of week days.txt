@@ -1,0 +1,46 @@
+#include<stdio.h>
+int main()
+{
+    int i,n,d,q,k,a[1000];
+    printf("Enter the year [2001 to 2800]:");
+    scanf("%d",&n);
+    for(i=0;i<7;i++)
+    a[i]=52;
+    d=n-2001;q=d/4;
+    if(((n%4==0)&&(n%100!=0))||(n%400==0))
+    a[d+q]=53,a[d+q+1]=53;
+    else
+    a[d+q]=53;
+    if(((n%4==0)&&(n%100!=0))||(n%400==0))
+    {
+        k=d+q;
+        while(k>6)
+        {
+            a[k-7]=a[k];
+            k=k-7;
+        }
+        k=d+q;
+        while(k>5)
+        {
+            a[k-6]=a[k+1];
+            k=k-7;
+        }
+    }
+    else
+    {
+        k=d+q;
+        while(k>6)
+        {
+            a[k-7]=a[k];
+            k=k-7;
+        }
+    }
+    printf("In year--> %d\n\n",n);
+    printf("Monday-->%d\n",a[0]);
+    printf("Tuesday-->%d\n",a[1]);
+    printf("Wednesday-->%d\n",a[2]);
+    printf("Thursday-->%d\n",a[3]);
+    printf("Friday-->%d\n",a[4]);
+    printf("Saturday-->%d\n",a[5]);
+    printf("Sunday-->%d\n",a[6]);
+}
